@@ -12,7 +12,23 @@
 */
 function fizzBuzz() {
     // YOUR CODE GOES BELOW HERE //
-
+//print numbers 1-100
+for(var i = 1; i<= 100; i++){
+  //if a multiple of 3 and 5 print fizzbuzz
+    if(i % 3 === 0 && i % 5 === 0){
+        console.log('FizzBuzz')}
+        //if only multiple of 3 just fizz
+  else if(i % 3 === 0){
+        console.log('Fizz')
+      // and if multiple of 5 print buzz
+    } else if( i % 5 === 0){
+        console.log('Buzz')
+      
+      //print i
+    }else{
+        console.log(i);
+    }
+}
 
 
     // YOUR CODE GOES ABOVE HERE //
