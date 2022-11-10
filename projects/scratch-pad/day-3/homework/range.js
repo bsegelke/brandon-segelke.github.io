@@ -21,15 +21,29 @@
  *  b. you'll need a loop, which one is best?
  *  c. you'll wanna make use of the push() method of Array.
  */
-function range(start, end) {
+ function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
-    
-    
+    var newArray = [];
+    // function called range that takes two integers as parameters
+    //loop thorugh the code i should be same as start
+    if(start < end) {for(var i = start; i<= end; i++)
+        //push the numbers int oa new array
+    newArray.push(i);
+    //else if start is greater loop the otherway
+ } else if(start > end){
+        for(var i = start; i >= end; i--){
+            //push the values into new array
+           newArray.push(i);
+        }
+    }
+    //return new array
+return newArray;
+    // return an array with the integers in between 
+    //if first value is greater, return in reverse order
     
     
     // YOUR CODE GOES ABOVE HERE //
 }
-
 
 
 

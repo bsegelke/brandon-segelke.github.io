@@ -12,15 +12,20 @@
  * TIP: In JavaScript, how can we decipher if a value is an Array? Can typeof
  * work?
  */
-function isArray(value) {
+ function isArray(value) {
     // YOUR CODE BELOW HERE //
-    
+    //if value is array return true
+    if(Array.isArray(value) === true){
+        return true
+    }else {
+        // else return false
+        return false
+    }
     // typeof operator use Array.isArray method to find array
     
     
     // YOUR CODE ABOVE HERE //
 }
-
 /** 
  * Given an input value, return true if the value is an Object intended as a 
  * collection, false if otherwise.
@@ -30,12 +35,16 @@ function isArray(value) {
  * with typeof.
  */
 
-function isObject(value) {
+ function isObject(value) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+    //if value does equal object and is not array && not null && not a date 
+    if (typeof value === 'object' && value !== null && !Array.isArray(value) && value instanceof Date !== true){
+       //return true
+        return true
+        //return false
+    }
+     
+    return false
     // YOUR CODE ABOVE HERE //
 }
 
@@ -47,7 +56,14 @@ function isObject(value) {
  */
 function isCollection(value) {
     // YOUR CODE BELOW HERE //
-    
+        //if value does equal object or is an array && not null && not a date 
+        if (typeof value === 'object' && value !== null && !Array.isArray(value) && value instanceof Date !== true || Array.isArray(value)){
+            //return true
+             return true
+             //return false
+         }
+          
+         return false
     
     
     
@@ -73,11 +89,38 @@ function isCollection(value) {
  *    typeOf("javascript") -> "string"
  *    typeOf([1,2,3]) -> "array"
  */ 
-function typeOf(value) {
+ function typeOf(value) {
     // YOUR CODE BELOW HERE //
+    //if string return string
+    if (typeof value == 'string'){
+        return 'string'
+        //if array return array
+    }else if(Array.isArray(value) == true){
+        return 'array'
+        //object return object
+    }else if (typeof value === 'object' && value !== null && !Array.isArray(value) && value instanceof Date !== true){
+        return 'object'
+        //if undefined return undefined
+    }else if(typeof value == 'undefined'){
+        return 'undefined'
+        //if number return number
+    }else if(typeof value == 'number'){
+        return 'number'
+        //if boolean return bool
+    }else if(typeof value == 'boolean'){
+        return 'boolean'
+        //if null return null
+    }else if(value == null){
+        return 'null'
+        //if function return function
+    }else if(typeof value == 'function'){
+        return 'function'
+        //if date retunr date
+    }else if(value instanceof Date == true){
+        return 'date'
+    }
     
-    
-    
+
     
     // YOUR CODE ABOVE HERE //
 }
