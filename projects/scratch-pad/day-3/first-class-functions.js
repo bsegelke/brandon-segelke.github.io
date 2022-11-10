@@ -13,8 +13,14 @@
  */
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
-    
+    // return function that...
+    return function(numTest){if(numTest > base){
+        return true;
+    }else {
+        return false;
+    }
+// test whether value is greater than base (test means true or false if else maybe)
+    }
     
     
     // YOUR CODE ABOVE HERE //
@@ -27,7 +33,13 @@ function createGreaterThanFilter(base) {
  */
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
+    return function(lessThan) {
+        if(lessThan < base){
+            return true;
+        } else {
+            return false;
+        }
+    }
     
     
     
@@ -41,7 +53,16 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    
+    //return a function
+    return function(newString){
+         //tests if newString starts with the char from startsWith also convert to same lowercase structure
+         if(newString.toLowerCase()[0] === startsWith.toLowerCase()) {
+            return true;
+         } else {
+            return false;
+         }
+    }
+  
     
     
     
@@ -54,8 +75,15 @@ function createStartsWithFilter(startsWith) {
  * character.
  */
 function createEndsWithFilter(endsWith) {
-    // YOUR CODE BELOW HERE //
-    
+    // YOUR CODE BELOW HERE // //return a function
+    return function(lowChar){
+        //if last index of the input is the same then return true else false also convert to lowercase
+        if(lowChar.toLowerCase()[lowChar.length - 1] === endsWith.toLowerCase()){
+            return true;
+        } else {
+            return false;
+        }
+    }
     
     
     
@@ -68,11 +96,17 @@ function createEndsWithFilter(endsWith) {
  * 
  * TIP: You need to loop over the Strings, right? We need to pass each String to 
  * the modify Function, but we need to collect the results into some collection.
- */
+ */ //takes a function as a argument
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
-    
-    
+    //collect reults in a collection aka make empty array var
+    var output = [];
+    //loop over each string
+    for(var i = 0;i < strings.length; i++){
+   output.push(modify(strings[i]))
+
+    }
+    return output;
     
     
     // YOUR CODE ABOVE HERE //
@@ -87,14 +121,23 @@ function modifyStrings(strings, modify) {
  * 
  * TIP: You need to loop over the Strings, right? And pass them to the test?
  */
+//takes function as argument
+
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+    //loop through the string
+    for(var i = 0;i < strings.length; i++){
+        //if function is false return false
+        if(test(strings[i]) === false) {
+          return false;       
+    }
+    //return a boolean
+   
+}  
+  return true;
+}    
     // YOUR CODE ABOVE HERE //
-}
+
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 if((typeof process !== 'undefined') &&

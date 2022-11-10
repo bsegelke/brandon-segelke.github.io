@@ -15,7 +15,7 @@
 function isArray(value) {
     // YOUR CODE BELOW HERE //
     
-    
+    // typeof operator use Array.isArray method to find array
     
     
     // YOUR CODE ABOVE HERE //
@@ -29,6 +29,7 @@ function isArray(value) {
  * null, not an Array, not a Date - all of these will return 'object' if used 
  * with typeof.
  */
+
 function isObject(value) {
     // YOUR CODE BELOW HERE //
     
