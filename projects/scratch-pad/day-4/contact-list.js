@@ -34,22 +34,48 @@
  */
 
 // YOUR CODE GOES BELOW HERE //
-function makeContact(id, nameFirst, nameLast) {
-
+function makeContact(id, nameFirst, nameLast) { // think about factory function
+var obj = {};
+obj.id = id;
+obj.nameFirst = nameFirst;
+obj.nameLast = nameLast;
+return obj;
 } 
 
 
-function makeContactList() {
+function makeContactList() { //also factory function
     /*
      * You need something here to hold contacts. See length api for a hint:
      */
-    var contacts;
+    var contacts = [];
     
     return {
         // we implemented the length api for you //
         length: function() {
             return contacts.length;
+        },
+        addContact: function(contact){
+            contacts.push(contact);
+        },
+        findContact: function(fullName){
+            for(var i = 0; i< contacts.length; i++){
+                if(contacts[i].nameFirst + ' ' + contacts[i].nameLast == fullName){
+                    return contacts[i]
+                } else return undefined
+            }
+       
+        },
+        removeContact: function(contact){
+            contacts.pop(contact);
+        },
+        printAllContactNames: function(){
+            var newName = ''
+            for(var i = 0; i < contacts.length; i++){
+             newName = newName.concat(contacts[i].nameFirst + ' ' + contacts[i].nameLast + '\n');
+            } 
+           return newName.trim();
         }
+    
     }
 }
 
