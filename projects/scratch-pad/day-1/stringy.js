@@ -202,7 +202,7 @@ if(stringOne < stringTwo) {
 }else if(stringOne > stringTwo) {
     return -1
     //if equal return 0
-}else {
+}else if(stringOne == stringTwo){
     return 0
 }
 
@@ -229,7 +229,7 @@ function sortDescending(stringOne, stringTwo) {
     }else if(stringOne < stringTwo) {
         return -1
         //if equal return 0
-    }else {
+    }else if(stringOne == stringTwo) {
         return 0
     }
     
