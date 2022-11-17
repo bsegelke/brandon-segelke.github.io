@@ -107,27 +107,52 @@ function maybeNoises(object) {
 //////////////////////////////////////////////////////////////////////
 // Function 10 - Has Words ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+//Should take a string of words and a word and return true if <word> is in <string of words>, otherwise return false."
+//Should take a string of words and a word and return true if <word> is in <string of words>, otherwise return false."
 function hasWord(string, word) {
-
-}
+    //turn string into an array
+    var arr = string.split(' ');
+    //loop through the array
+    for( var i = 0; i < arr.length; i++){
+    //if the index of the array = word,
+    if(arr[i] == word){
+        //return true
+       return true
+    } 
+        //else return false
+    }
+    return false;
+    }
+    
 
 //////////////////////////////////////////////////////////////////////
 // Function 11 - Add Friend //////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+// Should take a name and an object and add the name to the object's friends array then return the object"
 function addFriend (name, object) {
-
-}
-
+    //add the name to the friends key in object
+    object.friends.push(name);
+    //return object
+    return object;
+    }
 //////////////////////////////////////////////////////////////////////
 // Function 12 - Is Friend ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+//Should take a name and an object and return true if <name> is a friend of <object> and false otherwise"
 function isFriend(name, object) {
-
-}
-
+    //check if friends is even in the object first!
+    if('friends' in object){
+        //loop through friends
+    for(var i = 0; i < object.friends.length; i++){
+    //if name = object.friends return true
+    if (object.friends[i] === name){
+        return true
+    }
+    }
+    }
+    return false
+    //return false
+    }
 //////////////////////////////////////////////////////////////////////
 // Function 13 - Non-Friends /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
