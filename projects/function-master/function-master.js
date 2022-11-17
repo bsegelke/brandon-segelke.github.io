@@ -3,7 +3,9 @@
 //////////////////////////////////////////////////////////////////////
 // use the funciton master html tests to figure out what function to make
 function objectValues(object) {
+var emptyArray = Object.values(object)
 
+ return emptyArray;
 } 
 
 //////////////////////////////////////////////////////////////////////
@@ -11,65 +13,97 @@ function objectValues(object) {
 //////////////////////////////////////////////////////////////////////
 
 function keysToString(object) {
-
-}
-
+    var string = Object.keys(object)
+    return string.join(' ')
+    }
+    
 //////////////////////////////////////////////////////////////////////
 // Function 3 - Values to String /////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function valuesToString(object) {
+    //if the value of an object is a string
+    var newArr = []
+    for(var key in object){
+        if (typeof object[key] == 'string'){
+            newArr.push(object[key])
+        }
+    } return newArr.join(' ')
     
-}
+    }
+       
 
 //////////////////////////////////////////////////////////////////////
 // Function 4 - Array or Object //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+//Should take one argument and return 'array' if its an array and 'object' if its an object"
 function arrayOrObject(collection) {
-    
+    if(Array.isArray(collection)){
+        return 'array'
+    }else return 'object'
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 5 - Capitalize Word //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+//Should take a string of one word, and return the word with its first letter capitalized"
 function capitalizeWord(string) {
-    
+    return string[0].toUpperCase() + string.slice(1, string.length)
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 6 - Capitalize All Words /////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+//Should take a string of words and return a string with all the words capitalized "
 function capitalizeAllWords(string) {
-    
-}
+   //turn string into an array of strings
+    var newArray = string.split(' ')
+//loop through the array to get index values
+    for( var i = 0; i < newArray.length; i++){
+        //newArray at index equals first letter capitilized plus the rest of that word
+        newArray[i] = newArray[i][0].toUpperCase() + newArray[i].substring(1)
+    // join them back into a string seperated with spaces
+    } return newArray.join(' ')
+}   
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 7 - Welcome Message //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+//Should take an object with a name property and return 'Welcome <Name>!'"
 function welcomeMessage(object) {
-
-}
-
+    //capitilize first letter of the name
+    var caps = object.name[0].toUpperCase() + object.name.substring(1)
+    //return the message
+    return 'Welcome ' + caps + '!'
+    }
 //////////////////////////////////////////////////////////////////////
 // Function 8 - Profile Info /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+// Should take an object with a name an a species and return '<Name> is a <Species>
 function profileInfo(object) {
-
-}
-
+    //container for capitilixed name and species
+    var newName = object.name[0].toUpperCase() + object.name.substring(1);
+    var newSpecies = object.species[0].toUpperCase() + object.species.substring(1);
+    //capitlize name and species
+    return newName + ' is a ' + newSpecies;
+    
+        //return object.name + 'is a ' object.species
+    }
 //////////////////////////////////////////////////////////////////////
 // Function 9 - Maybe Noises /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+// Should take an object, if this object has a noises array return them as a string separated by a space, if there are no noises return 'there are no noises'"
 function maybeNoises(object) {
-
-}
-
+    //check if object has a noises array
+    if('noises' in object && object.noises.length > 0){
+        //if it does have noises check that its not empty
+        //if its not empty return the array as a string with spaces
+        return object.noises.join(' ')
+    
+    }//if it doesnt exist or index is empty return 'there are no noises'
+    else{ return 'there are no noises'}
+    }
 //////////////////////////////////////////////////////////////////////
 // Function 10 - Has Words ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
