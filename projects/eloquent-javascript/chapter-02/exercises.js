@@ -3,25 +3,61 @@
 // triangles ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function triangles() {
-
+function triangles(num) {
+  var pyramid =''
+  for(var i = 0; i < num; i++){
+      pyramid += '#'
+      console.log(pyramid)
+  }
+  return pyramid
 }
+
 ////////////////////////////////////////////////////////////////////////////////
 // fizzBuzz ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
 function fizzBuzz() {
-  
+  //for loop to count through the numbers
+for(var i = 1; i <= 15; i++){
+  //if its both do fizzbuzz
+  if(i % 3 == 0 && i % 5 == 0){
+      console.log('fizzbuzz')
+      //if its only % 3 log 'Fizz
+  }else if(i % 3 == 0){
+      console.log('fizz')
+      //if only % 5 log "Buzz"
+  }else if(i % 5 == 0){
+      console.log('buzz')
+      //else just log the numbers
+  }else{
+      console.log(i)
+  }
+}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // drawChessboard //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function drawChessboard() {
+// create an empty string to hold the board
 
+//function that makes chessboard
+function drawChessboard(num) {
+  boardStr = ''
+    //make a loop that will make a new row for each number that size holds
+    for(var i = 0; i < num; i++){
+        //a loop that also prints a " " on even numbe4rs
+for(var x = 0; x < num; x++){
+    if((i + x) % 2 == 0){
+        boardStr += ' '
+        //else it prints a '#' on adds
+    }else {
+        boardStr += '#'
+    }
+} boardStr += '\n'
+    } 
+    console.log(boardStr)
 }
-
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
