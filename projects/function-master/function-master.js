@@ -158,7 +158,19 @@ function isFriend(name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) {
+    var emptyArray = [];
+    //find that persons name in the object
+    for (var i = 0; i < array.length; i++) {
+        // console.log(object[i].name)
+        if (array[i].name == name) {
+            for(var x = 0; x < array.length; x++)
+      if(array[i].friends.includes(array[x].name) === false && array[x].name !== name){
+        emptyArray.push(array[x].name)
+      }
+  return emptyArray
 
+}
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
