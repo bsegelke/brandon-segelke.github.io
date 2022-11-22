@@ -178,24 +178,46 @@ function nonFriends(name, array) {
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
-
+object[key] = value
+return object
 }
-
+    
+    
+    
 //////////////////////////////////////////////////////////////////////
 // Function 15 - Remove Properties ///////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
-
-}
-
+    //loop through the array
+    for(var i = 0; i < array.length; i++){
+        //loop through the object
+    for(var key in object){
+        //if the array index is == to the object index, then remove that property.
+        if(array[i] === key){
+            delete object[key]
+        }
+    }
+    }return object
+    }
 //////////////////////////////////////////////////////////////////////
 // Function 16 - Dedup ///////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function dedup(array) {
-
-}
+    //create an empty array to send stuff to
+    var empty = []
+    //loop through the main array
+    for(var i = 0; i < array.length; i++){
+    //if array includes array[i] && doesnt exist in empty array
+    if(array.includes(array[i]) && empty.includes(array[i]) != true){
+        //send it to the empty array
+        empty.push(array[i])
+    }
+    }
+    //return the empty array
+    return empty
+    }
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
