@@ -44,6 +44,39 @@ return value;
 * _.typeOf([1,2,3]) -> "array"
 */
 
+    _.typeOf = function(value) {
+        // YOUR CODE BELOW HERE //
+        //if string return string
+        if (typeof value == 'string'){
+            return 'string'
+            //if array return array
+        }else if(Array.isArray(value) == true){
+            return 'array'
+            //object return object
+        }else if (typeof value === 'object' && value !== null && !Array.isArray(value) && value instanceof Date !== true){
+            return 'object'
+            //if undefined return undefined
+        }else if(typeof value == 'undefined'){
+            return 'undefined'
+            //if number return number
+        }else if(typeof value == 'number'){
+            return 'number'
+            //if boolean return bool
+        }else if(typeof value == 'boolean'){
+            return 'boolean'
+            //if null return null
+        }else if(value == null){
+            return 'null'
+            //if function return function
+        }else if(typeof value == 'function'){
+            return 'function'
+            //if date retunr date
+        }else if(value instanceof Date == true){
+            return 'date'
+        }
+        
+
+}
 
 /** _.first
 * Arguments:
@@ -62,8 +95,27 @@ return value;
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
+_.first = function(array, number){
+//if array is not array return []
+var empty = []
+if(Array.isArray(array) === false){
+    return []
+}  
+//if number is not given or not a number return the first index of array
+if(number === undefined || typeof number !== 'number'){
+    return array[0]
 
+}// if number is greater than the length of the array return the array as is
+if(number > array.length){
+    return array;
+}
 
+//other wise return the first number items of array
+for(var i = 0; i < number; i++){
+empty.push(array[i])
+}
+return empty
+}
 /** _.last
 * Arguments:
 *   1) An array
@@ -81,7 +133,26 @@ return value;
 *   _.last(["a", "b", "c"], 1) -> "c"
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
-
+_.last = function(array, number){
+    //if array is not an array, return []
+    if(!Array.isArray(array)){
+        return []
+    }
+    //if number is not given or not a number return the last value in the array
+    if(number === undefined || typeof number !== 'number'){
+        return array[array.length-1];
+    }
+    //if number is greater than array.length return array
+    if(number > array.length){
+        return array
+    }
+    //else return the last numbers of the array
+    else{var empty = []
+        for(var i = array.length-1; empty.length < number; i--){
+            empty.unshift(array[i])
+        }
+    }return empty;
+    }
 
 /** _.indexOf
 * Arguments:
@@ -98,6 +169,17 @@ return value;
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
+_.indexOf = function(array, value){
+    //loop through the array
+    for(var i = 0; i < array.length; i++){
+        //if array[i] === value
+        if(array[i] === value){
+            //return  i
+            return i;
+            //else return -1
+        }  
+    }  return -1
+}
 
 
 /** _.contains
@@ -114,7 +196,13 @@ return value;
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
-
+_.contains = function(array, value){
+    //use a ternary operator to say if the value exists in the array
+  let result = (array.indexOf(value) >= 0) ? true: false
+   
+ 
+ return result
+ }
 //higher order function godspeed baby
 /** _.each
 * Arguments:
@@ -256,7 +344,32 @@ func(collection[i], i, collection);
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
+_.every = function(collection, func){
+// determine if collectioin is array
+if(Array.isArray(collection)){
+// determine if func wasnt passed in
+if (func === undefined){
+    for(let i = 0; i < collection.length; i++){
+if(!collection[i]){
+    return false;
+} // if the value is not truthy
+    }
+}else {
+for (let i = 0; i < collection.length; i++){
+    if (func(collection[i], i, collection) === false ){
+return false;
+    }
+}
+}
+//else it was
+} else {   if (func === undefined)  {
 
+}    // else its an object
+//determine if func wasnt passed in
+//else it was
+}
+return true
+}
 
 /** _.some
 * Arguments:
