@@ -242,8 +242,18 @@ func(collection[i], i, collection);
 * Examples:
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
+_.unique = function(array){
+    var newArray = []
+for(var i = 0; i < array.length; i++){
+   if(_.indexOf(newArray, array[i]) < 0){
+    
+    newArray.push(array[i])
+   }
+   
+}
 
-
+return newArray;
+}
 /** _.filter
 * Arguments:
 *   1) An array
@@ -259,7 +269,19 @@ func(collection[i], i, collection);
 * Extra Credit:
 *   use _.each in your implementation
 */
-
+_. filter = (array, func) => {
+    //create an empty array to store my values
+    var newArray = []
+    //loop through the array
+    for(var i = 0; i < array.length; i++){
+   // if the function which now has the values of the array looped index are true
+        if(func(array[i], i, array) == true){
+            //then push it to the empty array
+        newArray.push(array[i])
+        }
+    }
+    return newArray;
+}
 
 /** _.reject
 * Arguments:
@@ -273,7 +295,19 @@ func(collection[i], i, collection);
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
-
+_.reject = (array, func) => {
+    //empty array to store fale values
+    var newArray = []
+    //loop through my array
+    for(var i = 0; i < array.length; i++){
+ //if the function with the index values !== true
+ if(func(array[i], i, array) !== true){
+//push them to the array
+newArray.push(array[i])
+//return the array
+ }
+    }return newArray
+}
 
 /** _.partition
 * Arguments:
@@ -293,7 +327,23 @@ func(collection[i], i, collection);
 *   }); -> [[2,4],[1,3,5]]
 }
 */
-
+_.partition = (array,func) => {
+    //create empty subarrays
+    var subArray = [[],[]]
+    //loop through array
+    for(var i = 0; i < array.length; i++){
+    //if the func results to true
+    if(func(array[i], i, array) === true){
+    //push it to the zero index array
+    subArray[0].push(array[i])
+    }else{
+        //else push it to the 1 index array
+        subArray[1].push(array[i])
+    }
+    }
+    //return the new subarray
+    return subArray
+    }
 
 /** _.map
 * Arguments:
@@ -310,7 +360,31 @@ func(collection[i], i, collection);
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
-
+_.map = (collection, func) => {
+    //emptyArr
+    var emptyArr =[];
+    //if collection is array
+    if(Array.isArray(collection)){
+    //loop through array
+    for(var i =0; i < collection.length; i++){
+    //result = func(collection[i], i, collection) 
+    result = func(collection[i], i, collection) 
+        //push the result to the empty Array
+    emptyArr.push(result);
+    }
+    //else if collection is object
+    }else{
+    //loop thorough object with for in loop
+    for(var key in collection){
+    //result = func(collection[key], key, collection)
+    var result = func(collection[key], key, collection)
+    //push result to the empty array
+    emptyArr.push(result);
+    }
+    }
+    //return emptyArr
+    return emptyArr;
+    }
 
 /** _.pluck
 * Arguments:
@@ -411,9 +485,25 @@ return true
 * Examples:
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
+_.reduce = function(array, func, seed){
+    // create result variable
+    let result;
+// determine if seed did did not recieve a value
+if(seed === undefined){
+result = array [0];
+for (let i = 1; i < array.length; i++){
+    result = func(result, array[i], i, array);
+}
+}else {
+result = seed;
+for(let i = 0; i < array.length; i++){
+    result = func(result, array[i], i, array)
+}
+}
+return result;
+}
 
-
-/** _.extend
+/** _.extend // use the spread operator to take in unkown ammount of args
 * Arguments:
 *   1) An Object
 *   2) An Object
