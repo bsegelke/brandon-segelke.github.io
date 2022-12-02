@@ -43,7 +43,7 @@ return accumulator;
     return females;
 }
 
-var oldestCustomer = functions(array){
+ var oldestCustomer = function(array){
 let oldest = _.reduce(array, function(accumulator, current){
 // accumulator = {name: 'Adele Mullen'}
 // current = {name: 'Olga}
@@ -52,14 +52,25 @@ if(accumulator.age > current.age){
 } else {
     return current;
 }
-}) return oldest.name;
+}) 
+return oldest.name;
 };
 // invoke reduce
 // result = array[0] or {name: 'Adele Mullin'}
 // iterate at the 1 index
 //1
 //result = result(result, {, 1, [...]})
-var youngestCustomer;
+var youngestCustomer = function(array){
+    let youngest = array.reduce(function(accumulator, current){
+    if(accumulator.age < current.age){
+        return accumulator;
+    } else {
+        return current;
+    }
+    }) 
+    return youngest.name;
+    };
+
 //the balance is a string not a number, a string with a money symbol and commas.
 //remove that first and then use a method to turn string into number
 //try using the replace method to remove the $ and commas
