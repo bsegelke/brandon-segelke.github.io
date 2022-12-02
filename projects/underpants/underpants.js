@@ -396,7 +396,11 @@ _.map = (collection, func) => {
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
-
+_.pluck = (array, key) => {
+    return _.map(array, function(x) {
+      return x[key];
+    });
+  }
 
 /** _.every
 * Arguments:
@@ -465,7 +469,52 @@ return true
 *   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
+_.some = (collection, func) => {
+    if(typeof func == 'function'){
+//if collection is an array
+if(Array.isArray(collection)){
+    //loop through array
+    for(var i = 0; i < collection.length; i++){
+        //function
+//if atleast one of the index is true
+var result = func(collection[i], i, collection);
+if(result === true){
+    //return true
+    return true;
+}
+    //else return false    
+}
+    }
+    //else collection is object
+    //loop through object
+ else{for(var key in collection){
+//function
+//if at least one of the index is true
+var result = func(collection[key], key, collection);
+if(result === true){
+    return true;
+}   
 
+}
+}
+    }else if(typeof func !== 'function'){
+        if(Array.isArray(collection)){
+            for(var i = 0; i < collection.length; i++){
+                if(collection[i]){
+                    return true;
+                }
+            }
+        }else{
+            for(var key in collection){
+                if(collection[key]){
+                    return true;
+                }
+            }
+        }
+    }return false;
+}
+
+    
 
 /** _.reduce
 * Arguments:
@@ -517,7 +566,10 @@ return result;
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
-
+_.extend = (objectOne, objectTwo, ...objects) => {
+    return Object.assign(objectOne, objectTwo, ...objects)
+    };
+    
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
