@@ -269,7 +269,7 @@ return newArray;
 * Extra Credit:
 *   use _.each in your implementation
 */
-_. filter = (array, func) => {
+_.filter = (array, func) => {
     //create an empty array to store my values
     var newArray = []
     //loop through the array

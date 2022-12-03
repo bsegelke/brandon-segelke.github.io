@@ -83,11 +83,43 @@ return x
 return (arrayOfNums / array.length);;
 }
 
-var firstLetterCount;
+var firstLetterCount = (array, letter) => {
+    var letterHome = [];
+    var x = _.filter(array, function(collection, index){
+        
+    if(collection.name[0].toLowerCase() === letter.toLowerCase()){
+        letterHome.push(letter)
+    }
+    })
+    return letterHome.length
+    }
 
-var friendFirstLetterCount;
+    var friendFirstLetterCount = (array, customer, letter) => {
+        var letterHome = []
+    var ffLetter = _.filter(array, function(collection ){
+    if(collection.name.toLowerCase() === customer.toLowerCase()){
+    _.filter(collection.friends, function(franz){
+        if(franz.name[0].toLowerCase() === letter.toLowerCase()){
+            letterHome.push(franz.name)
+        }
+    })
+    }
+    })
+    return letterHome.length
+    }
 
-var friendsCount;
+    var friendsCount = (array, name) => {
+        var friendArray = []
+    _.filter(array, function(collection){
+        _.filter(collection.friends, function(friendsCollection){
+        if(friendsCollection.name === name){
+            friendArray.push(collection.name)
+            
+        }
+       })
+    })
+    return friendArray;
+    }
 
 var topThreeTags;
 
