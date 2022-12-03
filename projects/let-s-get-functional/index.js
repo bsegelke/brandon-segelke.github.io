@@ -74,7 +74,14 @@ var youngestCustomer = function(array){
 //the balance is a string not a number, a string with a money symbol and commas.
 //remove that first and then use a method to turn string into number
 //try using the replace method to remove the $ and commas
-var averageBalance;
+var averageBalance = (array) => {
+    var arrayOfNums = 0
+ var x = _.forEach(array, function (collection, index){
+   arrayOfNums += Number(array[index].balance.replace(/[$,]/g,''))
+return x
+})
+return (arrayOfNums / array.length);;
+}
 
 var firstLetterCount;
 
