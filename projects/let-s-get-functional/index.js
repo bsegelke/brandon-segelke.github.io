@@ -123,7 +123,28 @@ var firstLetterCount = (array, letter) => {
 
 var topThreeTags;
 
-var genderCount;
+var genderCount = (array) => {
+    var obj = {
+      female: 0,
+      male: 0,
+      'non-binary': 0
+    };
+    array.reduce(function (accumulator, current, index){
+     
+    if(current.gender === 'female'){
+      obj.female += 1
+      
+    }
+    else if(current.gender === 'male'){
+      obj.male += 1
+      
+    }
+    else if(current.gender === 'non-binary'){
+      obj['non-binary'] += 1
+    } else return accumulator
+    }, 0)
+    return obj
+    }
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
