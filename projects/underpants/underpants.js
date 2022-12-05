@@ -200,7 +200,7 @@ _.contains = function(array, value){
     //use a ternary operator to say if the value exists in the array
   let result = (array.indexOf(value) >= 0) ? true: false
    
- 
+
  return result
  }
 //higher order function godspeed baby
