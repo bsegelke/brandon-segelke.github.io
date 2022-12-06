@@ -121,7 +121,48 @@ var firstLetterCount = (array, letter) => {
     return friendArray;
     }
 
-var topThreeTags;
+
+var topThreeTags = (array) => {
+    let allTags = []
+  
+  for(var i = 0; i < array.length; i++){
+   let tags = array[i].tags;
+    for(let j = 0; j < tags.length; j++){
+      allTags.push(tags[j])
+    }
+  }
+  let countObj = {};
+  for (let i = 0; i < allTags.length; i++){
+    if(countObj[allTags[i]]){
+      countObj[allTags[i]] += 1;
+    } else {
+       countObj[allTags[i]] = 1;
+    }
+    
+  }
+  let top = {}
+   Object.keys(countObj).reduce(function( a, b){
+  if(countObj[a] < countObj[b]){
+  top[b] = countObj[b]
+  return  a 
+  }else {
+    return b
+  }
+  },0)
+  
+  let tipTop = []
+   Object.keys(top).reduce(function( a, b){
+  if(top[a] < top[b]){
+    tipTop.push(b)
+  //tipTop[b] = top[b]
+  return  a 
+  }else {
+    return b
+  }
+  },0)
+  
+  return tipTop;
+  }
 
 var genderCount = (array) => {
     var obj = {
