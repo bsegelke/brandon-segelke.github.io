@@ -122,47 +122,42 @@ var firstLetterCount = (array, letter) => {
     }
 
 
-var topThreeTags = (array) => {
-    let allTags = []
-  
-  for(var i = 0; i < array.length; i++){
-   let tags = array[i].tags;
-    for(let j = 0; j < tags.length; j++){
-      allTags.push(tags[j])
-    }
-  }
-  let countObj = {};
-  for (let i = 0; i < allTags.length; i++){
-    if(countObj[allTags[i]]){
-      countObj[allTags[i]] += 1;
-    } else {
-       countObj[allTags[i]] = 1;
-    }
+    var topThreeTags = (array) => {
+      let allTags = []
     
-  }
-  let top = {}
-   Object.keys(countObj).reduce(function( a, b){
-  if(countObj[a] < countObj[b]){
-  top[b] = countObj[b]
-  return  a 
-  }else {
-    return b
-  }
-  },0)
-  
-  let tipTop = []
-   Object.keys(top).reduce(function( a, b){
-  if(top[a] < top[b]){
-    tipTop.push(b)
-  //tipTop[b] = top[b]
-  return  a 
-  }else {
-    return b
-  }
-  },0)
-  
-  return tipTop;
-  }
+    for(var i = 0; i < array.length; i++){
+     let tags = array[i].tags;
+      for(let j = 0; j < tags.length; j++){
+        allTags.push(tags[j])
+      }
+    }
+    let countObj = {};
+    for (let i = 0; i < allTags.length; i++){
+      if(countObj[allTags[i]]){
+        countObj[allTags[i]] += 1;
+      } else {
+         countObj[allTags[i]] = 1;
+      }
+      
+    }
+    let valuesArray = []
+    for(let key in countObj){
+      valuesArray.push(countObj[key])
+    }
+    let sorted = valuesArray.sort()
+    let finalThree = sorted.slice(-3)
+    
+    let top = []
+    
+    for(let key in countObj){
+      for(var i = 0; i < finalThree.length; i++){
+    if(countObj[key] === finalThree[i] && finalThree[i + 1] !== countObj[key] ){
+      top.push(key)
+    }
+    }
+    }
+    return top;
+    }
 
 var genderCount = (array) => {
     var obj = {

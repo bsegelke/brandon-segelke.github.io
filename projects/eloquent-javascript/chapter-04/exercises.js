@@ -1,34 +1,75 @@
 ////////////////////////////////////////////////////////////////////////////////
 // range ///////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
+//console.log(sum(range(1, 10)));
+//Write a range function that takes two arguments, start and end, and returns an array containing all the numbers from start up to (and including) end.
 
-function range() {
 
-}
+function range(start, end, step) {
+  //make empty array to hold values
+  let array = []
+//if start is same as end return empty []
+  if(start === end){
+    return []
+  }
+  //else if there is no step input do a normal range print
+  else if(step === undefined){
+  for(let i = start; i <= end; i++){
+    array.push(i)
+  }
+  }//if if step is given and positive loop plus step
+  else if(step > 0){
+    
+    for(let y = start; y <= end; y += step)
+    array.push(y);
+    //if step is negative loop plus negative step
+  }else if(step < 0) { 
+    
+    for(let z = start; z >= end; z += step){
+      array.push(z)
+    }
+  }//return array
+  return array
+  }
 
 ////////////////////////////////////////////////////////////////////////////////
 // sum /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function sum() {
-
-}
+function sum(array) {
+  let total = 0;
+  for(let i = 0; i < array.length; i++){
+    total += array[i]
+  }
+  return total;
+  }
 
 ////////////////////////////////////////////////////////////////////////////////
 // reverseArray ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function reverseArray() {
-
-}
+let reverseArray = (array) => {
+  let newArray = [];
+  for(let i = 0; i < array.length; i++){
+    newArray.unshift(array[i])
+  }
+  return newArray;
+  }
 
 ////////////////////////////////////////////////////////////////////////////////
 // reverseArrayInPlace /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function reverseArrayInPlace() {
-
-}
+function reverseArrayInPlace(array) {
+  let newArray = []
+ for(let i = array.length -1; i >= 0; i--){
+ newArray.push(array[i])
+ }
+ for(let y = 0; y < array.length; y++){
+   array[y] = newArray[y]
+ }
+ return array;
+ }
 
 ////////////////////////////////////////////////////////////////////////////////
 // arrayToList /////////////////////////////////////////////////////////////////
