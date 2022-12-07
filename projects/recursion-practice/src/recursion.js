@@ -168,10 +168,10 @@ var reverse = function(string, output =[]) {
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string, outputrev = [], output = string) {
  
-  if(string.length === 0 && outputrev.join('') === output){
+  if(string.length === 0 && outputrev.join('').toLowerCase().replace(' ', '') === output.toLowerCase().replace(' ', '')){
     
     return true
-  }else if(string.length === 0 && outputrev.join('') !== output){
+  }else if(string.length === 0 && outputrev.join('').toLowerCase().replace(' ', '') !== output.toLowerCase().replace(' ', '')){
     return false
   }
   
@@ -193,9 +193,14 @@ var modulo = function(x, y) {
 // 12. Write a function that multiplies two numbers without using the * operator  or
 // JavaScript's Math object.
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
-var multiply = function(x, y) {
-};
-
+var multiply = function(x, y, result = 0) {
+  if (y === 0){
+    return result
+  }
+  result = result + x;
+  
+  return multiply(x, y-1, result)
+  };
 // 13. Write a function that divides two numbers without using the / operator  or DONT DO
 // JavaScript's Math object.
 var divide = function(x, y) {
