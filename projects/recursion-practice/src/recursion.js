@@ -197,8 +197,11 @@ var multiply = function(x, y, result = 0) {
   if (y === 0){
     return result
   }
-  result = result + x;
   
+  if(y < 0 && x < 0){
+    result = result - x;
+    return multiply(x, y+1, result)
+  }result = result + x;
   return multiply(x, y-1, result)
   };
 // 13. Write a function that divides two numbers without using the / operator  or DONT DO
@@ -219,34 +222,74 @@ var gcd = function(x, y) {
 // compareStr('house', 'houses') // false
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
-var compareStr = function(str1, str2) {
-};
-
+var compareStr = function(str1, str2, result = true) {
+  if(str1.length === 0 && str2.length === 0){
+      return result
+  }
+  if(str1[0] === str2[0]){
+      console.log(str1[0])
+      result = true;
+      return compareStr(str1.slice(1), str2.slice(1), result)
+  }else{
+      return false;
+  }
+  
+  
+  };
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
-var createArray = function(str){
-};
-
+var createArray = function(str, result = []){
+  if(str.length === 0){
+      return result
+  };
+  
+  result.push(str[0])
+  return createArray(str.slice(1), result)
+  
+  };
 // 17. Reverse the order of an array
-var reverseArr = function (array) {
-};
+var reverseArr = function (array, result = []) {
+  if(array.length === 0){
+      return result;
+  }
+  result.unshift(array[0])
+  return reverseArr(array.slice(1), result)
+  
+  };
+  
 
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
-var buildList = function(value, length) {
-};
-
-// 19. Count the occurence of a value inside a list.
-// countOccurrence([2,7,4,4,1,4], 4) // 3
-// countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
-var countOccurrence = function(array, value) {
-};
-
+var buildList = function(value, length, result = []) {
+  if(result.length === length){
+      return result;
+  }
+  result.push(value);
+  return buildList(value, length, result)
+  
+  };
+  
+  var countOccurrence = function(array, value, result = 0) {
+    if(array.length === 0){
+        return result;
+    }
+    if(array[0] === value){
+        result++
+    }
+    return countOccurrence(array.slice(1), value, result)
+    
+    };
 // 20. Write a recursive version of map.
 // rMap([1,2,3], timesTwo); // [2,4,6]
-var rMap = function(array, callback) {
-};
+var rMap = function(array, callback, result = []) {
+  if(array.length === 0){
+      return result;
+  }
+  result.push(callback(array[0]));
+  return rMap(array.slice(1), callback, result)
+  
+  };
 
 // 21. Write a function that counts the number of times a key occurs in an object. DONT DO
 // var testobj = {'e': {'x':'y'}, 't':{'r': {'e':'r'}, 'p': {'y':'r'}},'y':'e'};
