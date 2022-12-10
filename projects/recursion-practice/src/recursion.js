@@ -323,8 +323,17 @@ var fibonacci = function(n) {
 // nthFibo(5); // 5
 // nthFibo(7); // 13
 // nthFibo(3); // 2
-var nthFibo = function(n) {
-};
+function nthFibo(n) {
+  if(n < 0){
+    return null;
+  }
+  //if n is zero return zero
+  if(n === 0) return 0;
+  //if n is 2 or less than return 1
+  if (n <= 2) return 1;
+// return n-1 + n-2
+  return nthFibo(n - 1) + nthFibo(n - 2);
+}
 
 // 26. Given an array of words, return a new array containing each word capitalized.
 // var words = ['i', 'am', 'learning', 'recursion'];
