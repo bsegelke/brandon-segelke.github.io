@@ -156,7 +156,7 @@ let obj = {
 let x = { value: 10 };
 let y = x;
 
-//Here the value of x is copies by reference and assigned to y. This means that y simply references the same object that x is referncing rather than creating a new copy of the object.
+//Here the value of x is copied by reference and assigned to y. This means that y simply references the same object that x is referncing rather than creating a new copy of the object.
 // Any changes made to the object through x or y WILL affect the other variable, because they are both referncing the same object.
  /* 
  * 
