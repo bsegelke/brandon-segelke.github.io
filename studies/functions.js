@@ -76,6 +76,42 @@
 
         console.log(global, functionScope) // this will result in error because it cannt reach functionScope.
 
+        //3a-1:
+        var veryGlobal = 'im global'
+        if(veryGlobal = 'im global'){
+              var print = 'print me'             //inside our if statement is a var. Even though it is blocked we can still reach it because it is global
+                                                 //var is always global scoped.
+        };
+        console.log(print)
+
+        // however if we try the same the thing with let or const...
+
+                //3a-2:
+        var veryGlobal = 'im global'
+        if(veryGlobal = 'im global'){
+              let blockedHard = 'print me'             //inside our if statement is a let. Let is not global scoped so we cannot access it outside its block scope.
+                                                 //let is block scoped.
+        };
+        console.log(blockedHard)
+
+          //3a-3:
+          var veryGlobal = 'im global'
+          if(veryGlobal = 'im global'){
+                const stillBlocked = 'print me'             //inside our if statement is a const. Const is not global so we cannot access it outside its block scope.
+                                                   //const is block scoped.
+          };
+          console.log(stillBlocked)
+
+          //3a-4
+          if (true) {
+              // This block of code is executed
+              let x = 'hello';
+              const y = 'world';
+            }
+            
+            console.log(x); // ReferenceError: x is not defined
+            console.log(y); // ReferenceError: y is not defined
+
  /* 
  * 3b. Closure
  *  // A closure is a function that has access to the variables in the outer scope where it was defined, even when the outer function has already returned. 
